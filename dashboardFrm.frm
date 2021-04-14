@@ -23,6 +23,26 @@ Begin VB.Form dashboardFrm
       TabIndex        =   8
       Top             =   0
       Width           =   4935
+      Begin VB.Label logoutLbl 
+         Alignment       =   2  'Center
+         BackColor       =   &H8000000D&
+         Caption         =   "LOGOUT"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   24
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000B&
+         Height          =   855
+         Left            =   0
+         TabIndex        =   15
+         Top             =   11760
+         Width           =   4935
+      End
       Begin VB.Image Image1 
          Height          =   1635
          Left            =   240
@@ -371,7 +391,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim CN As ADODB.Connection
-Dim RS As ADODB.Recordset
+Dim rs As ADODB.Recordset
 
 
 Dim userName As String
@@ -386,13 +406,13 @@ End Sub
 Public Function loadData()
 
 Set CN = New ADODB.Connection
-Set RS = New ADODB.Recordset
+Set rs = New ADODB.Recordset
 CN.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\VB Covid - 19 Tracker\covid.mdb;Persist Security Info=False"
 CN.Open
 
-RS.Open ("SELECT * from covid_count where city_name='Pune'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Pune'"), CN, adOpenStatic, adLockReadOnly
 
-With RS
+With rs
     punePie.Column = 1
     punePie.Data = .Fields("death_count")
     punePie.ColumnLabel = "DEATH - " + punePie.Data
@@ -408,11 +428,11 @@ With RS
     punePie.ColumnLabel = "ACTIVE - " + punePie.Data
 
 End With
-RS.Close
+rs.Close
 
-RS.Open ("SELECT * from covid_count where city_name='Mumbai'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Mumbai'"), CN, adOpenStatic, adLockReadOnly
 
-With RS
+With rs
     mumbaiPie.Column = 1
     mumbaiPie.Data = .Fields("death_count")
     mumbaiPie.ColumnLabel = "DEATH - " + mumbaiPie.Data
@@ -428,11 +448,11 @@ With RS
     mumbaiPie.ColumnLabel = "ACTIVE - " + mumbaiPie.Data
 
 End With
-RS.Close
+rs.Close
 
-RS.Open ("SELECT * from covid_count where city_name='Nagpur'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Nagpur'"), CN, adOpenStatic, adLockReadOnly
 
-With RS
+With rs
     nagpurPie.Column = 1
     nagpurPie.Data = .Fields("death_count")
     nagpurPie.ColumnLabel = "DEATH - " + nagpurPie.Data
@@ -448,14 +468,14 @@ With RS
     nagpurPie.ColumnLabel = "ACTIVE - " + nagpurPie.Data
 
 End With
-RS.Close
+rs.Close
 
             
 
 
-RS.Open ("select death_count from covid_count")
+rs.Open ("select death_count from covid_count")
 
-With RS
+With rs
     maharashtraBar.Column = 1
     maharashtraBar.Data = 0
     .MoveFirst
@@ -468,12 +488,12 @@ With RS
 
 maharashtraBar.ColumnLabel = "DEATH - " + maharashtraBar.Data
 End With
-RS.Close
+rs.Close
 
-RS.Open ("select recover_count from covid_count")
+rs.Open ("select recover_count from covid_count")
 
 
-With RS
+With rs
     maharashtraBar.Column = 2
     maharashtraBar.Data = 0
     .MoveFirst
@@ -486,13 +506,13 @@ With RS
 
 maharashtraBar.ColumnLabel = "Recover - " + maharashtraBar.Data
 End With
-RS.Close
+rs.Close
 
 
-RS.Open ("select active_count from covid_count")
+rs.Open ("select active_count from covid_count")
 
 
-With RS
+With rs
     maharashtraBar.Column = 3
     maharashtraBar.Data = 0
     .MoveFirst
@@ -504,10 +524,10 @@ With RS
 
 maharashtraBar.ColumnLabel = "Active - " + maharashtraBar.Data
 End With
-RS.Close
+rs.Close
 
-RS.Open ("select total_count from covid_count")
-With RS
+rs.Open ("select total_count from covid_count")
+With rs
     maharashtraBar.Column = 4
     maharashtraBar.Data = 0
     .MoveFirst
@@ -519,7 +539,7 @@ With RS
 
 maharashtraBar.ColumnLabel = "TOTAL - " + maharashtraBar.Data
 End With
-RS.Close
+rs.Close
 
 End Function
 
@@ -529,6 +549,11 @@ Private Sub Form_Load()
 loadData
 
 
+End Sub
+
+Private Sub Label2_Click()
+Unload Me
+loginFrm.Show
 End Sub
 
 Private Sub vaccineMenu_Click()

@@ -3,15 +3,14 @@ Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Begin VB.Form loginFrm 
    Caption         =   "Admin Login"
    ClientHeight    =   6690
-   ClientLeft      =   120
-   ClientTop       =   465
+   ClientLeft      =   4770
+   ClientTop       =   2205
    ClientWidth     =   12000
    Icon            =   "loginFrm.frx":0000
    LinkTopic       =   "Form1"
    Picture         =   "loginFrm.frx":10CA
    ScaleHeight     =   6690
    ScaleWidth      =   12000
-   StartUpPosition =   3  'Windows Default
    Begin MSAdodcLib.Adodc Adodc2 
       Height          =   495
       Left            =   960
