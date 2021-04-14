@@ -14,8 +14,8 @@ Begin VB.Form loginFrm
    StartUpPosition =   3  'Windows Default
    Begin MSAdodcLib.Adodc Adodc2 
       Height          =   495
-      Left            =   2040
-      Top             =   5400
+      Left            =   960
+      Top             =   5520
       Visible         =   0   'False
       Width           =   1695
       _ExtentX        =   2990
@@ -123,11 +123,65 @@ Begin VB.Form loginFrm
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   3255
-      Left            =   3360
+      Height          =   4815
+      Left            =   3000
       TabIndex        =   0
       Top             =   1560
-      Width           =   6735
+      Width           =   7095
+      Begin VB.CommandButton addNew 
+         Caption         =   "ADD NEW"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   615
+         Left            =   2640
+         TabIndex        =   13
+         Top             =   3840
+         Visible         =   0   'False
+         Width           =   2295
+      End
+      Begin VB.TextBox confirmPwdTxt 
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   14.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         IMEMode         =   3  'DISABLE
+         Left            =   3360
+         PasswordChar    =   "*"
+         TabIndex        =   11
+         Top             =   2880
+         Visible         =   0   'False
+         Width           =   3015
+      End
+      Begin VB.CommandButton addUserBtn 
+         Caption         =   "ADD USER"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   615
+         Left            =   1680
+         TabIndex        =   10
+         Top             =   2880
+         Width           =   2175
+      End
       Begin VB.TextBox passwordTxt 
          BeginProperty Font 
             Name            =   "Nirmala UI"
@@ -143,7 +197,7 @@ Begin VB.Form loginFrm
          Left            =   3360
          PasswordChar    =   "*"
          TabIndex        =   2
-         Top             =   1680
+         Top             =   1920
          Width           =   3015
       End
       Begin VB.TextBox usernameTxt 
@@ -177,10 +231,89 @@ Begin VB.Form loginFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   615
-         Left            =   2160
+         Left            =   4200
          TabIndex        =   3
-         Top             =   2400
+         Top             =   2880
          Width           =   2175
+      End
+      Begin VB.Label incorrectConfirmPwd 
+         AutoSize        =   -1  'True
+         Caption         =   "*Password does not match"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   255
+         Left            =   4440
+         TabIndex        =   16
+         Top             =   3360
+         Visible         =   0   'False
+         Width           =   2460
+      End
+      Begin VB.Label incorrectPwd 
+         AutoSize        =   -1  'True
+         Caption         =   "*Incorrect Password"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   255
+         Left            =   4440
+         TabIndex        =   15
+         Top             =   2400
+         Visible         =   0   'False
+         Width           =   1830
+      End
+      Begin VB.Label incorrectUsrName 
+         AutoSize        =   -1  'True
+         Caption         =   "*Inccorrect Username"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   255
+         Left            =   4440
+         TabIndex        =   14
+         Top             =   1560
+         Visible         =   0   'False
+         Width           =   1965
+      End
+      Begin VB.Label confirmPwdLbl 
+         AutoSize        =   -1  'True
+         Caption         =   "CONFIRM PASSWORD"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   14.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   240
+         TabIndex        =   12
+         Top             =   2880
+         Visible         =   0   'False
+         Width           =   2790
       End
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
@@ -213,9 +346,9 @@ Begin VB.Form loginFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   1320
+         Left            =   1560
          TabIndex        =   5
-         Top             =   1680
+         Top             =   1920
          Width           =   1485
       End
       Begin VB.Label usernameLbl 
@@ -231,7 +364,7 @@ Begin VB.Form loginFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   1320
+         Left            =   1560
          TabIndex        =   4
          Top             =   1080
          Width           =   1455
@@ -289,7 +422,106 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Dim con As New ADODB.Connection
+Dim rs As New ADODB.Recordset
+
+Function addNewUser()
+con.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\VB Covid - 19 Tracker\covid.mdb;Persist Security Info=False"
+rs.ActiveConnection = con
+rs.CursorLocation = adUseClient
+rs.LockType = adLockOptimistic
+rs.CursorType = adOpenDynamic
+rs.Source = "select * from authentication where username ='" & usernameTxt.Text & "'"
+rs.Open
+If rs.EOF Then
+    dashboardFrm.loggedInUserLbl.Caption = StrConv(usernameTxt.Text, vbUpperCase)
+    Adodc2.Recordset.Fields("userName") = StrConv(usernameTxt.Text, vbUpperCase)
+    Adodc2.Recordset.Update
+    rs.addNew
+    Call saveData
+    rs.Update
+    MsgBox "New User Added", vbOKOnly, "Add User"
+    con.Close
+    Unload Me
+    dashboardFrm.Show
+
+Else
+    incorrectUsrName.Caption = "Username already exists"
+    incorrectUsrName.Visible = True
+    con.Close
+End If
+End Function
+
+Function saveData()
+rs.Fields(0) = usernameTxt.Text
+rs.Fields(1) = passwordTxt.Text
+End Function
+
+Private Sub addNew_Click()
+If usernameTxt.Text = "" And passwordTxt.Text = "" And confirmPwdTxt.Text = "" Then
+    incorrectUsrName.Visible = True
+    incorrectUsrName.Caption = "*Please Enter Username"
+    incorrectPwd.Visible = True
+    incorrectPwd.Caption = "*Please Enter Password"
+    incorrectConfirmPwd.Visible = True
+    incorrectConfirmPwd.Caption = "*Please Confirm Password"
+ElseIf usernameTxt.Text = "" And passwordTxt.Text = "" Then
+    incorrectUsrName.Visible = True
+    incorrectUsrName.Caption = "*Please Enter Username"
+    incorrectPwd.Visible = True
+    incorrectPwd.Caption = "*Please Enter Password"
+ElseIf usernameTxt.Text = "" And confirmPwdTxt.Text = "" Then
+    incorrectUsrName.Visible = True
+    incorrectUsrName.Caption = "*Please Enter Username"
+    incorrectConfirmPwd.Visible = True
+    incorrectConfirmPwd.Caption = "*Please Confirm Password"
+ElseIf passwordTxt.Text = "" And confirmPwdTxt.Text = "" Then
+    incorrectPwd.Visible = True
+    incorrectPwd.Caption = "*Please Enter Password"
+    incorrectConfirmPwd.Visible = True
+    incorrectConfirmPwd.Caption = "*Please Confirm Password"
+ElseIf usernameTxt.Text = "" Then
+    incorrectUsrName.Visible = True
+    incorrectUsrName.Caption = "*Please Enter Username"
+ElseIf passwordTxt.Text = "" Then
+    incorrectPwd.Visible = True
+    incorrectPwd.Caption = "*Please Enter Password"
+ElseIf confirmPwdTxt.Text = "" Then
+    incorrectConfirmPwd.Visible = True
+    incorrectConfirmPwd.Caption = "*Please Confirm Password"
+ElseIf passwordTxt.Text <> confirmPwdTxt.Text Then
+    incorrectConfirmPwd.Visible = True
+    incorrectConfirmPwd.Caption = "*Password Does not Match"
+Else
+    Dim ans As String
+    ans = InputBox("Please Enter Unique Key", "Add New User")
+    If ans = "abcd1234g" Then
+        Call addNewUser
+    Else
+        MsgBox "Invalid Key", vbCritical, "Access Denied"
+    End If
+End If
+    
+End Sub
+
+Private Sub addUserBtn_Click()
+addUserBtn.Visible = False
+loginBtn.Visible = False
+Frame1.Height = 4815
+confirmPwdLbl.Visible = True
+confirmPwdTxt.Visible = True
+addNew.Visible = True
+
+End Sub
+
+
+
+Private Sub confirmPwdTxt_Change()
+incorrectConfirmPwd.Visible = False
+End Sub
+
 Private Sub Form_Load()
+Frame1.Height = 3855
 usernameTxt.Text = ""
 End Sub
 
@@ -303,8 +535,9 @@ If Adodc1.Recordset.EOF Then
     
 Else
     MsgBox "Welcome " + usernameTxt.Text, vbOKOnly
-    loginFrm.Hide
+    Unload Me
     dashboardFrm.Show
+    dashboardFrm.loggedInUserLbl.Caption = StrConv(usernameTxt.Text, vbUpperCase)
     Adodc2.Recordset.Fields("userName") = StrConv(usernameTxt.Text, vbUpperCase)
     Adodc2.Recordset.Update
     
@@ -317,8 +550,12 @@ validateLogin
 
 End Sub
 
+Private Sub passwordTxt_Change()
+incorrectPwd.Visible = False
+End Sub
+
 Private Sub passwordTxt_KeyPress(KeyAscii As Integer)
-If KeyAscii = 13 Then  ' The ENTER key.
+If KeyAscii = 13 And confirmPwdTxt.Visible = False Then  ' The ENTER key.
     validateLogin
 End If
 End Sub
@@ -329,4 +566,8 @@ dateLbl.Caption = Date
 timeLbl.Caption = Time
 End Sub
 
+
+Private Sub usernameTxt_Change()
+incorrectUsrName.Visible = False
+End Sub
 
