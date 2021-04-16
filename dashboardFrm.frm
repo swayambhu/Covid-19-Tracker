@@ -23,6 +23,27 @@ Begin VB.Form dashboardFrm
       TabIndex        =   8
       Top             =   0
       Width           =   4935
+      Begin VB.Label Label9 
+         Alignment       =   2  'Center
+         BackColor       =   &H80000011&
+         BorderStyle     =   1  'Fixed Single
+         Caption         =   "HOSPITAL"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   24
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   855
+         Left            =   0
+         TabIndex        =   16
+         Top             =   4320
+         Width           =   4935
+      End
       Begin VB.Label logoutLbl 
          Alignment       =   2  'Center
          BackColor       =   &H8000000D&
@@ -554,6 +575,12 @@ End Sub
 Private Sub Label2_Click()
 Unload Me
 loginFrm.Show
+End Sub
+
+Private Sub Label9_Click()
+Unload Me
+hospitalFrm.Show
+
 End Sub
 
 Private Sub vaccineMenu_Click()
