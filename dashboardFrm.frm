@@ -23,6 +23,27 @@ Begin VB.Form dashboardFrm
       TabIndex        =   8
       Top             =   0
       Width           =   4935
+      Begin VB.Label Label14 
+         Alignment       =   2  'Center
+         BackColor       =   &H80000011&
+         BorderStyle     =   1  'Fixed Single
+         Caption         =   "PATIENTS DETAILS"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   24
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000B&
+         Height          =   855
+         Left            =   0
+         TabIndex        =   17
+         Top             =   5160
+         Width           =   4935
+      End
       Begin VB.Label Label9 
          Alignment       =   2  'Center
          BackColor       =   &H80000011&
@@ -40,7 +61,7 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H00FFFFFF&
          Height          =   855
          Left            =   0
-         TabIndex        =   16
+         TabIndex        =   14
          Top             =   4320
          Width           =   4935
       End
@@ -60,7 +81,7 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H8000000B&
          Height          =   855
          Left            =   0
-         TabIndex        =   15
+         TabIndex        =   13
          Top             =   11760
          Width           =   4935
       End
@@ -88,7 +109,7 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H8000000E&
          Height          =   675
          Left            =   2160
-         TabIndex        =   14
+         TabIndex        =   12
          Top             =   840
          Width           =   2355
       End
@@ -109,7 +130,7 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H0000FF00&
          Height          =   450
          Left            =   2520
-         TabIndex        =   13
+         TabIndex        =   11
          Top             =   1560
          Width           =   90
       End
@@ -137,7 +158,7 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H00FFFFFF&
          Height          =   855
          Left            =   0
-         TabIndex        =   12
+         TabIndex        =   10
          Top             =   2640
          Width           =   4935
       End
@@ -158,47 +179,9 @@ Begin VB.Form dashboardFrm
          ForeColor       =   &H8000000B&
          Height          =   855
          Left            =   0
-         TabIndex        =   11
+         TabIndex        =   9
          Top             =   3480
          Width           =   4935
-      End
-      Begin VB.Label dateLbl1 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         BeginProperty Font 
-            Name            =   "Nirmala UI"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H000000FF&
-         Height          =   450
-         Left            =   600
-         TabIndex        =   10
-         Top             =   12360
-         Width           =   90
-      End
-      Begin VB.Label timeLbl 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         BeginProperty Font 
-            Name            =   "Nirmala UI"
-            Size            =   15.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H000000FF&
-         Height          =   450
-         Left            =   2640
-         TabIndex        =   9
-         Top             =   12360
-         Width           =   90
       End
    End
    Begin VB.Frame dashboardFrame 
@@ -341,6 +324,46 @@ Begin VB.Form dashboardFrm
          Left            =   240
          Top             =   1920
       End
+      Begin VB.Label dateLbl1 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "date"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   450
+         Left            =   16320
+         TabIndex        =   16
+         Top             =   360
+         Width           =   645
+      End
+      Begin VB.Label timeLbl 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "time"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   15.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   450
+         Left            =   16320
+         TabIndex        =   15
+         Top             =   840
+         Width           =   660
+      End
       Begin VB.Line Line2 
          BorderColor     =   &H0000FF00&
          X1              =   480
@@ -411,7 +434,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim CN As ADODB.Connection
+Dim cn As ADODB.Connection
 Dim rs As ADODB.Recordset
 
 
@@ -426,12 +449,12 @@ End Sub
 
 Public Function loadData()
 
-Set CN = New ADODB.Connection
+Set cn = New ADODB.Connection
 Set rs = New ADODB.Recordset
-CN.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\VB Covid - 19 Tracker\covid.mdb;Persist Security Info=False"
-CN.Open
+cn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\VB Covid - 19 Tracker\covid.mdb;Persist Security Info=False"
+cn.Open
 
-rs.Open ("SELECT * from covid_count where city_name='Pune'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Pune'"), cn, adOpenStatic, adLockReadOnly
 
 With rs
     punePie.Column = 1
@@ -451,7 +474,7 @@ With rs
 End With
 rs.Close
 
-rs.Open ("SELECT * from covid_count where city_name='Mumbai'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Mumbai'"), cn, adOpenStatic, adLockReadOnly
 
 With rs
     mumbaiPie.Column = 1
@@ -471,7 +494,7 @@ With rs
 End With
 rs.Close
 
-rs.Open ("SELECT * from covid_count where city_name='Nagpur'"), CN, adOpenStatic, adLockReadOnly
+rs.Open ("SELECT * from covid_count where city_name='Nagpur'"), cn, adOpenStatic, adLockReadOnly
 
 With rs
     nagpurPie.Column = 1
@@ -573,13 +596,26 @@ loadData
 End Sub
 
 Private Sub Label2_Click()
+
+cn.Close
 Unload Me
 loginFrm.Show
+
+End Sub
+
+Private Sub Label14_Click()
+cn.Close
+patientFrm.Show
+Unload Me
+
 End Sub
 
 Private Sub Label9_Click()
-Unload Me
+cn.Close
 hospitalFrm.Show
+
+Unload Me
+
 
 End Sub
 
