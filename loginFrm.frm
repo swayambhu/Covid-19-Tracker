@@ -533,12 +533,15 @@ If Adodc1.Recordset.EOF Then
     MsgBox "INVALID CREDENTIALS", vbCritical
     
 Else
-    MsgBox "Welcome " + usernameTxt.Text, vbOKOnly
-    Unload Me
-    dashboardFrm.Show
     dashboardFrm.loggedInUserLbl.Caption = StrConv(usernameTxt.Text, vbUpperCase)
     Adodc2.Recordset.Fields("userName") = StrConv(usernameTxt.Text, vbUpperCase)
     Adodc2.Recordset.Update
+    MsgBox "Welcome " + usernameTxt.Text, vbOKOnly
+    Unload Me
+    dashboardFrm.Show
+    'dashboardFrm.loggedInUserLbl.Caption = StrConv(usernameTxt.Text, vbUpperCase)
+    'Adodc2.Recordset.Fields("userName") = StrConv(usernameTxt.Text, vbUpperCase)
+    'Adodc2.Recordset.Update
     
 End If
 End Function

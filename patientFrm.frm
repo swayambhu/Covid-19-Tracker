@@ -17,16 +17,15 @@ Begin VB.Form patientFrm
    StartUpPosition =   3  'Windows Default
    WindowState     =   2  'Maximized
    Begin TabDlg.SSTab SSTab1 
-      Height          =   11760
+      Height          =   12600
       Left            =   5040
       TabIndex        =   34
       Top             =   240
       Width           =   18855
       _ExtentX        =   33258
-      _ExtentY        =   20743
+      _ExtentY        =   22225
       _Version        =   393216
       Tabs            =   2
-      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   520
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -40,23 +39,46 @@ Begin VB.Form patientFrm
       EndProperty
       TabCaption(0)   =   "REGISTRATION"
       TabPicture(0)   =   "patientFrm.frx":0000
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Frame2"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).ControlCount=   1
       TabCaption(1)   =   "SET APPOINTMENT"
       TabPicture(1)   =   "patientFrm.frx":001C
-      Tab(1).ControlEnabled=   -1  'True
-      Tab(1).Control(0)=   "Frame10"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Adodc3"
-      Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "Frame16"
-      Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Frame17"
-      Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Frame18"
-      Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).ControlCount=   5
+      Tab(1).ControlEnabled=   0   'False
+      Tab(1).Control(0)=   "Frame9(1)"
+      Tab(1).Control(1)=   "Frame18"
+      Tab(1).Control(2)=   "Frame17"
+      Tab(1).Control(3)=   "Frame16"
+      Tab(1).Control(4)=   "Adodc3"
+      Tab(1).Control(5)=   "Frame10"
+      Tab(1).ControlCount=   6
+      Begin VB.Frame Frame9 
+         Caption         =   "VACCINE STOCK"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   14.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   5655
+         Index           =   1
+         Left            =   -65040
+         TabIndex        =   94
+         Top             =   6600
+         Width           =   8640
+         Begin MSChart20Lib.MSChart vaccineChart 
+            Height          =   4695
+            Left            =   240
+            OleObjectBlob   =   "patientFrm.frx":0038
+            TabIndex        =   95
+            Top             =   720
+            Width           =   7935
+         End
+      End
       Begin VB.Frame Frame18 
          Caption         =   "BEDS AVAILABLE "
          BeginProperty Font 
@@ -68,18 +90,18 @@ Begin VB.Form patientFrm
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   3375
-         Left            =   480
+         Height          =   4095
+         Left            =   -74520
          TabIndex        =   93
          Top             =   8160
          Width           =   9375
          Begin MSChart20Lib.MSChart hospitalBedsgraph 
-            Height          =   2655
+            Height          =   2895
             Left            =   360
-            OleObjectBlob   =   "patientFrm.frx":0038
-            TabIndex        =   94
-            Top             =   600
-            Width           =   7095
+            OleObjectBlob   =   "patientFrm.frx":1C8C
+            TabIndex        =   96
+            Top             =   480
+            Width           =   8535
          End
       End
       Begin VB.Frame Frame17 
@@ -94,7 +116,7 @@ Begin VB.Form patientFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1935
-         Left            =   9840
+         Left            =   -65160
          TabIndex        =   91
          Top             =   720
          Width           =   8775
@@ -193,10 +215,10 @@ Begin VB.Form patientFrm
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   3975
-         Left            =   9840
+         Height          =   3495
+         Left            =   -65160
          TabIndex        =   88
-         Top             =   3840
+         Top             =   2880
          Width           =   8775
          Begin VB.CommandButton Command9 
             Caption         =   "TODAY'S APPOINTMENT"
@@ -216,14 +238,14 @@ Begin VB.Form patientFrm
             Width           =   2655
          End
          Begin MSDataGridLib.DataGrid DataGrid1 
-            Bindings        =   "patientFrm.frx":1881
-            Height          =   2535
+            Bindings        =   "patientFrm.frx":350D
+            Height          =   2055
             Left            =   0
             TabIndex        =   89
-            Top             =   1440
+            Top             =   1320
             Width           =   8775
             _ExtentX        =   15478
-            _ExtentY        =   4471
+            _ExtentY        =   3625
             _Version        =   393216
             HeadLines       =   1
             RowHeight       =   19
@@ -283,8 +305,9 @@ Begin VB.Form patientFrm
       End
       Begin MSAdodcLib.Adodc Adodc3 
          Height          =   615
-         Left            =   14520
+         Left            =   -60480
          Top             =   5640
+         Visible         =   0   'False
          Width           =   1695
          _ExtentX        =   2990
          _ExtentY        =   1085
@@ -339,7 +362,7 @@ Begin VB.Form patientFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   7095
-         Left            =   480
+         Left            =   -74520
          TabIndex        =   62
          Top             =   720
          Width           =   9255
@@ -504,7 +527,7 @@ Begin VB.Form patientFrm
                _ExtentX        =   4260
                _ExtentY        =   661
                _Version        =   393216
-               Format          =   125239297
+               Format          =   125894657
                CurrentDate     =   44302
             End
          End
@@ -758,7 +781,7 @@ Begin VB.Form patientFrm
             Strikethrough   =   0   'False
          EndProperty
          Height          =   10815
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   35
          Top             =   720
          Width           =   18135
@@ -868,6 +891,7 @@ Begin VB.Form patientFrm
                   Strikethrough   =   0   'False
                EndProperty
                Height          =   2175
+               Index           =   0
                Left            =   6720
                TabIndex        =   58
                Top             =   240
@@ -1441,7 +1465,7 @@ Begin VB.Form patientFrm
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               Format          =   125239297
+               Format          =   125894657
                CurrentDate     =   44302
             End
             Begin VB.ComboBox bloodList 
@@ -1754,7 +1778,7 @@ Begin VB.Form patientFrm
       Begin VB.Image Image1 
          Height          =   1635
          Left            =   240
-         Picture         =   "patientFrm.frx":1896
+         Picture         =   "patientFrm.frx":3522
          Stretch         =   -1  'True
          Top             =   720
          Width           =   1635
@@ -1880,7 +1904,39 @@ Attribute VB_Exposed = False
 Dim cn As New ADODB.Connection
 Dim rs As New ADODB.Recordset
 Dim str As String
+Function loadVaccineGraph()
+rs.Close
 
+
+rs.Open "select * from supply"
+Dim i As Integer
+i = 1
+Dim j As Integer
+j = 1
+With rs
+    .MoveFirst
+    Do While Not .EOF
+    
+        vaccineChart.RowCount = j
+        vaccineChart.Row = i
+        vaccineChart.RowLabel = rs!hospital_name
+        
+
+        vaccineChart.Column = 1
+        vaccineChart.ColumnLabel = "COVAXIN"
+        
+        vaccineChart.Data = rs!covaxin
+        vaccineChart.Column = 2
+        vaccineChart.ColumnLabel = "COVISHEILD"
+        vaccineChart.Data = rs!covisheild
+        i = i + 1
+        j = j + 1
+        .MoveNext
+    Loop
+End With
+rs.Close
+rs.Open "select * from patient"
+End Function
 Function loadBedsGraph()
 rs.Close
 rs.Open "select * from hospital"
@@ -1905,7 +1961,7 @@ With rs
     Loop
 End With
 rs.Close
-rs.Open "select * from patient", cn, adOpenDynamic, adLockPessimistic
+rs.Open "select * from patient"
 End Function
 
 Function saveData()
@@ -1947,6 +2003,14 @@ Function clearPatient()
     alternateMob.Text = ""
     email.Text = ""
     str = ""
+    bloodList.Text = "SELECT BLOOD GROUP"
+    dob.Value = Date
+    
+    pImage.Picture = Nothing
+    
+    
+    
+    
 End Function
 
 Private Sub Combo1_Change()
@@ -2009,6 +2073,54 @@ End If
 End Sub
 
 
+
+Private Sub Command11_Click()
+DataReport1.Show
+
+End Sub
+
+Private Sub Command2_Click()
+If Not (fname.Text = "" Or mname.Text = "" Or lname.Text = "" Or genderList.Text = "SELECT GENDER" Or maritialList.Text = "MARITAL STATUS" Or genderList.Text = "" Or maritialList.Text = "" Or kinName.Text = "" Or kinPhone.Text = "" Or kinEmail.Text = "" Or kinRelation.Text = "" Or houseNo.Text = "" Or city.Text = "" Or street.Text = "" Or pinCode.Text = "" Or mobNumber.Text = "" Or alternateMob.Text = "" Or email.Text = "") Then
+    confirm = MsgBox("Do you want to Delete the Patient?", vbYesNo + vbCritical, "Delete Confirmation")
+    
+    If confirm = vbYes Then
+        rs.Close
+        rs.Open "select * from patient where fname='" & fname.Text & "' and Mname = '" & mname.Text & "' and Lname = '" & lname.Text & "'"
+        rs.Delete adAffectCurrent
+        MsgBox "Record has been Deleted successfully", vbInformation, "Message"
+        Call clearPatient
+        
+        
+        rs.Update
+        rs.Close
+        rs.Open "select * from patient"
+        
+    
+    Else
+        MsgBox "Profile not Deleted", vbInformation, "Message"
+    End If
+Else
+    MsgBox "Select Profile for deleting", vbInformation, "Message"
+
+    
+End If
+End Sub
+
+Private Sub Command4_Click()
+If Not (fname.Text = "" Or mname.Text = "" Or lname.Text = "" Or genderList.Text = "SELECT GENDER" Or maritialList.Text = "MARITAL STATUS" Or genderList.Text = "" Or maritialList.Text = "" Or kinName.Text = "" Or kinPhone.Text = "" Or kinEmail.Text = "" Or kinRelation.Text = "" Or houseNo.Text = "" Or city.Text = "" Or street.Text = "" Or pinCode.Text = "" Or mobNumber.Text = "" Or alternateMob.Text = "" Or email.Text = "") Then
+    rs.Close
+    rs.Open "select * from patient where fname='" & fname.Text & "' and Mname = '" & mname.Text & "' and Lname = '" & lname.Text & "'"
+    Call saveData
+    rs.Update
+    Call clearPatient
+    fname.SetFocus
+    MsgBox "Patient Updated", vbInformation, "Success"
+    rs.Close
+    rs.Open "select * from patient"
+Else
+    MsgBox "Please fill al details", vbCritical, "Error"
+End If
+End Sub
 
 Private Sub Command5_Click()
 If searchFname.Text = "" Or searchMname.Text = "" Or searchLname.Text = "" Then
@@ -2275,7 +2387,7 @@ End With
 
 cn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\VB Covid - 19 Tracker\covid.mdb;Persist Security Info=False"
 rs.Open "select * from patient", cn, adOpenDynamic, adLockPessimistic
-
+Call loadVaccineGraph
 Call loadBedsGraph
 End Sub
 

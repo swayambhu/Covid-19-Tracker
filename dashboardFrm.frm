@@ -192,6 +192,82 @@ Begin VB.Form dashboardFrm
       TabIndex        =   0
       Top             =   0
       Width           =   18855
+      Begin VB.Frame drFrame 
+         Height          =   7575
+         Left            =   3840
+         TabIndex        =   19
+         Top             =   2280
+         Visible         =   0   'False
+         Width           =   9855
+         Begin VB.CommandButton Command3 
+            Caption         =   "HOSPITAL REPORT"
+            BeginProperty Font 
+               Name            =   "Nirmala UI"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   735
+            Left            =   3240
+            TabIndex        =   22
+            Top             =   2520
+            Width           =   3375
+         End
+         Begin VB.CommandButton Command2 
+            Caption         =   "PATIENTS REPORT"
+            BeginProperty Font 
+               Name            =   "Nirmala UI"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   735
+            Left            =   3240
+            TabIndex        =   21
+            Top             =   1200
+            Width           =   3375
+         End
+         Begin VB.CommandButton Command1 
+            Caption         =   "BACK"
+            BeginProperty Font 
+               Name            =   "Nirmala UI"
+               Size            =   12
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   735
+            Left            =   3840
+            TabIndex        =   20
+            Top             =   6120
+            Width           =   2415
+         End
+      End
+      Begin VB.CommandButton dReport 
+         Caption         =   "REPORTS"
+         BeginProperty Font 
+            Name            =   "Nirmala UI"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   735
+         Left            =   14520
+         TabIndex        =   18
+         Top             =   1440
+         Width           =   2775
+      End
       Begin MSAdodcLib.Adodc Adodc2 
          Height          =   330
          Left            =   7320
@@ -440,6 +516,18 @@ Dim rs As ADODB.Recordset
 
 Dim userName As String
 
+Private Sub Command1_Click()
+drFrame.Visible = False
+End Sub
+
+Private Sub Command2_Click()
+DataReport1.Show
+End Sub
+
+Private Sub Command3_Click()
+DataReport2.Show
+End Sub
+
 Private Sub dateTmr_Timer()
 dateLbl.Caption = Date
 dateLbl1.Caption = Date
@@ -589,6 +677,10 @@ End Function
 
 
 
+Private Sub dReport_Click()
+drFrame.Visible = True
+End Sub
+
 Private Sub Form_Load()
 loadData
 
@@ -619,7 +711,16 @@ Unload Me
 
 End Sub
 
+Private Sub logoutLbl_Click()
+cn.Close
+loginFrm.Show
+Unload Me
+
+End Sub
+
 Private Sub vaccineMenu_Click()
+cn.Close
+
 vaccineStock.Show
 Unload Me
 

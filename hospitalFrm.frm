@@ -1307,6 +1307,7 @@ Unload Me
 End Sub
 
 Private Sub logoutLbl_Click()
+cn.Close
 Unload Me
 loginFrm.Show
 
